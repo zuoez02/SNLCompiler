@@ -3,7 +3,7 @@ package com.yvan.lexicalAnalysis;
 public class StateTransform {
 
     // generating the state transition table
-    private int T[][] = {
+    private int transformTable[][] = {
 	    { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 22, 11, 12, 13, 14, 15, 18, 19,
 		    20, 17, 23 },
 	    { 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -34,7 +34,7 @@ public class StateTransform {
     public void print() {
 	for (int i = 0; i < 24; i++) {
 	    for (int j = 0; j < 21; j++) {
-		System.out.print(T[i][j] + "\t");
+		System.out.print(transformTable[i][j] + "\t");
 	    }
 	    System.out.println();
 	}
@@ -43,7 +43,7 @@ public class StateTransform {
     // transform the state by new input char
     public int stateTransform(int state, char getChar) {
 	int i = getState(getChar);
-	return T[state][i];
+	return transformTable[state][i];
     }
 
     // get the Equivalent identifier of the char

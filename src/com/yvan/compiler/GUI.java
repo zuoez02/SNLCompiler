@@ -127,6 +127,7 @@ public class GUI {
 		ll1GAM.LL1GramarAnalysis();
 	    } catch (Exception e) {
 		e.printStackTrace();
+		flag = true;
 	    } finally {
 		System.out.println(this.grammarTree.toString());
 	    }
@@ -151,11 +152,14 @@ public class GUI {
 	    } catch (MatchException e) {
 		displayArea.append("analysis finnished unexpected\n");
 		displayArea.append("error:" + rdp.getError());
+		flag = true;
 		// e.printStackTrace();
-		throw e;
+//		throw e;
 	    }
 
 	}
+	if(flag)
+	    return;
 	// System.out.print(this.grammarTree.getRoot().toString());
 	displayArea.append("\nBegin to Semantic analysis......");
 	SemanticAnalysisMachine sam = new SemanticAnalysisMachine(

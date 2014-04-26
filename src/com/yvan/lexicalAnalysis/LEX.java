@@ -1,22 +1,18 @@
 package com.yvan.lexicalAnalysis;
 
 public enum LEX {
-
     // Default is null
     NULL,
-
-    // ²¾¼Çµ¥´Ê·ûºÅ
+    // file symbol
     ERROR, EOF,
     // reserved word
     PROGRAM, PROCEDURE, TYPE, VAR, IF, THEN, ELSE, FI, WHILE, DO, ENDWH, BEGIN, END, READ, WRITE, ARRAY, OF, RECORD, RETURN, EMPTY,
-
     // Type
     INTEGER, CHAR,
     // multiple character word symbol
     ID, INTC, CHARC,
     // special symbol
     ASSIGN, EQ, LT, PLUS, MINUS, TIMES, OVER, LPAREN, RPAREN, DOT, COLON, SEMI, COMMA, LMIDPAREN, RMIDPAREN, UNDERANGE, ;
-
     // check out whether the word is a reserved word
     public static LEX reservedLookUp(String word) {
 	String key = word.toLowerCase();

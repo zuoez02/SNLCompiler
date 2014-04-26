@@ -285,9 +285,13 @@ public class GrammarTree {
 
     // ProcDecMore ::= null
     public TreeNode process42() {
+	System.out.println(this.stack.toString());
 	return this.stack.pop();
     }
-
+    // ProcDecMore ::= ProcDeclaration
+    public TreeNode process43() {
+	return this.stack.pop();
+    }
     // ProcName ::= ID
     public TreeNode process44(Token token) {
 	TreeNode treeNode = this.stack.pop();
@@ -843,6 +847,9 @@ public class GrammarTree {
 	    break;
 	case 42:
 	    t = process42();
+	    break;
+	case 43:
+	    t = process43();
 	    break;
 	case 44:
 	    t = process44(token);

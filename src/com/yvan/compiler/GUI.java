@@ -18,7 +18,6 @@ import com.yvan.semanticAnalysisMachine.*;
 import com.yvan.recursiveDescentGrammarAnalysis.*;
 
 public class GUI {
-    @SuppressWarnings("unused")
     private JFrame mainFrame;
     private JButton compileBtn;
     private JButton commitCheck;
@@ -97,8 +96,9 @@ public class GUI {
 	    displayArea.append("Begin to lexical analysis......");
 	    try {
 		tokenList = new LexicalAnalysisMachine(file).getTokenList();
-	    } catch (IOException e) {
-		e.printStackTrace();
+	    } catch (Exception e) {
+		displayArea.append("Finnished unexpected");
+		e.printStackTrace();		
 	    }
 	    displayArea.append("Finished\t");
 	    displayArea.append(this.tokenList.error());
@@ -128,20 +128,18 @@ public class GUI {
 	    } catch (Exception e) {
 		e.printStackTrace();
 		flag = true;
-	    } finally {
-		System.out.println(this.grammarTree.toString());
 	    }
-	    // if(ll1GAM.getRunningStatus() != null)
-	    // flag = true;
-	    // if(flag) {
-	    // displayArea.append("\n" + ll1GAM.getRunningStatus() + "\n");
-	    // return;
-	    // }
+	    if(ll1GAM.getRunningStatus() != null)
+		flag = true;
+	    if(flag) {
+		displayArea.append("\n" + ll1GAM.getRunningStatus() + "\n");
+		return;
+	    }
 	    displayArea.append("Finnished\n");
 	} else {
 	    // begin to Recursive Descent grammar analysis
 	    displayArea
-		    .append("\nBegin to Recursive Descent grammar analysis......");
+	    .append("\nBegin to Recursive Descent grammar analysis......");
 	    RecursiveDescentParser rdp = new RecursiveDescentParser(
 		    this.tokenList.copy());
 	    try {
@@ -154,7 +152,7 @@ public class GUI {
 		displayArea.append("error:" + rdp.getError());
 		flag = true;
 		// e.printStackTrace();
-//		throw e;
+		//		throw e;
 	    }
 
 	}

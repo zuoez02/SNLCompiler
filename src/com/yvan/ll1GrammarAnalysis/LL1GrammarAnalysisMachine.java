@@ -36,14 +36,14 @@ public class LL1GrammarAnalysisMachine {
 	// input stream is not null and the stack's top is not '#'
 	// begin to grammar analysis
 	while ((top != "#") && (head != null)) {
-	    System.out
-		    .println("----------------------------------------------------------------------------------------------------");
+//	    System.out
+//		    .println("----------------------------------------------------------------------------------------------------");
 	    this.runningSteps += this.analysisStack.toString() + ".\n";
-	    System.out.println(this.analysisStack.toString());
-	    System.out.println("top : \" " + top.toString() + " \" is "
-		    + top.getClass());
-	    System.out.println("head: \" " + head.toString() + " \" is "
-		    + head.getClass());
+//	    System.out.println(this.analysisStack.toString());
+//	    System.out.println("top : \" " + top.toString() + " \" is "
+//		    + top.getClass());
+//	    System.out.println("head: \" " + head.toString() + " \" is "
+//		    + head.getClass());
 	    if (head == LEX.DOT) {
 		this.runningStatus = "Program End!\n";
 		break;
@@ -51,13 +51,13 @@ public class LL1GrammarAnalysisMachine {
 	    // pop from stack if the top is the same as the first element of the
 	    // input stream
 	    if (top.equals(head)) {
-		System.out.println("Delete Top:" + top);
+//		System.out.println("Delete Top:" + top);
 		this.analysisStack.pop();
 		top = this.analysisStack.getTop();
 		this.inputStream.removeHead();
 		head = this.inputStream.getHead();
 		line = this.inputStream.getLine();
-		System.out.println("line:" + line);
+//		System.out.println("line:" + line);
 		// continue;
 	    } else {
 		// according the stack's top and stream's first element,
@@ -66,7 +66,7 @@ public class LL1GrammarAnalysisMachine {
 		// result.
 		int ProStmNum = this.table.searchProduceNumber((NES) top,
 			(LEX) head);
-		System.out.println("ProStmNum=" + ProStmNum);
+//		System.out.println("ProStmNum=" + ProStmNum);
 		Object[] product = this.produceFactory.Produce(ProStmNum);
 		int length = product.length;
 		// push objects to stack from tail to head.
@@ -74,18 +74,18 @@ public class LL1GrammarAnalysisMachine {
 		for (int i = length - 1; i >= 0; i--) {
 		    this.analysisStack.push(product[i]);
 		}
-		System.out.println("Grammar :"
-			+ this.grammarTree.getStack().toString());
-		System.out.println("Operator:"
-			+ this.grammarTree.getOperatorStack().toString());
-		System.out.println("Operand :"
-			+ this.grammarTree.getOperandStack().toString());
-		System.out.println("process...");
+//		System.out.println("Grammar :"
+//			+ this.grammarTree.getStack().toString());
+//		System.out.println("Operator:"
+//			+ this.grammarTree.getOperatorStack().toString());
+//		System.out.println("Operand :"
+//			+ this.grammarTree.getOperandStack().toString());
+//		System.out.println("process...");
 		this.grammarTree.process(ProStmNum,
 			this.inputStream.getHeadToken(), line);
 		top = this.analysisStack.getTop();
 		head = this.inputStream.getHead();
-		System.out.println("line:" + line);
+//		System.out.println("line:" + line);
 		// System.out.println("*******************");
 		// this.grammarTree.Print();
 		// System.out.println("*******************");
@@ -105,10 +105,10 @@ public class LL1GrammarAnalysisMachine {
 	    }
 
 	}
-	System.out.println("top : \" " + top.toString() + " \" is "
-		+ top.getClass());
-	System.out.println("head: \" " + head.toString() + " \" is "
-		+ head.getClass());
+//	System.out.println("top : \" " + top.toString() + " \" is "
+//		+ top.getClass());
+//	System.out.println("head: \" " + head.toString() + " \" is "
+//		+ head.getClass());
 
 	// if ((head == LEX.DOT) && (top == "#")){
 	// // this.grammarTree.Print();
